@@ -11,7 +11,29 @@ from rest_framework.decorators import api_view
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomTokenObtainPairSerializer
 from .serializers import UserSerializer
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
+
+@swagger_auto_schema(
+    method='post',
+    request_body=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'username': openapi.Schema(type=openapi.TYPE_STRING, description='Username'),
+            'email': openapi.Schema(type=openapi.TYPE_STRING, description='Email'),
+            'password': openapi.Schema(type=openapi.TYPE_STRING, description='Password'),
+            'phone_number': openapi.Schema(type=openapi.TYPE_STRING, description='Phone Number'),
+            'role': openapi.Schema(type=openapi.TYPE_STRING, description='Role (Buyer/Seller)'),
+        },
+        required=['username', 'email', 'password', 'phone_number', 'role']
+    ),
+    responses={
+        201: openapi.Response('Created', UserSerializer),
+        400: openapi.Response('Bad Request'),
+        500: openapi.Response('Internal Server Error'),
+    }
+)
 @api_view(['POST'])
 def signup(request):
         username = request.data.get('username')

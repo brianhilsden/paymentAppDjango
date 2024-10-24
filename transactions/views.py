@@ -11,19 +11,17 @@ import uuid
 # Create your views here.
 
 class TransactionsListCreate(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+   
 
     
     def get(self,request,format=None):
-        if request.user.is_anonymous:
-            return Response({"error": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        
         transactions = Transaction.objects.all()
         serializer = TransactionSerializer(transactions,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
     
     def post(self,request,format=None):
-        if request.user.is_anonymous:
-            return Response({"error": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        
         
         message = request.data.get("message")
         product_name = request.data.get("product_name")

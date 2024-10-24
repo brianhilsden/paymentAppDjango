@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'buyer',
     'seller',
     'transactions',
+    'drf_yasg'
 
 ]
 
@@ -103,12 +104,11 @@ WSGI_APPLICATION = 'paymentApp.wsgi.app'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # Use PostgreSQL
-        'NAME': 'payment_app',  # Replace with your database name
-        'USER': 'my_database_g2ni_user',        # Replace with your username
-        'PASSWORD': 'g8jFxSqKNLjkSIt4tt6DuFOpRqAKRMDK',    # Replace with your password
-        'HOST': 'dpg-crfeid3qf0us738jrf9g-a.oregon-postgres.render.com'
-,  
-        'PORT': '5432',                 # Default PostgreSQL port
+        'NAME': 'payment_app',                 
+        'USER': 'my_database_xs5e_user',            
+        'PASSWORD': 'AJw2JcUGvmh14WBq90hMA2kNXZLwn8FC',  
+        'HOST': 'dpg-cs5ifs56l47c73f4vnmg-a.oregon-postgres.render.com',  
+        'PORT': '5432',                              # Default PostgreSQL port
     }
 }
 
